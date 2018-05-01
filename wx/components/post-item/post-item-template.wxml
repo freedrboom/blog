@@ -1,0 +1,36 @@
+<template name="postItem">
+    <view class="post-container">
+       <view class="post-author-date">
+           <image class="post-author" src="{{user.avatar}}"></image>
+                <text class="post-date">{{updated_at}}</text>
+        </view>
+           <text class="post-title">{{title}}</text>
+            <text class="post-content">{{content}}
+            </text>
+            <view class="post-like">
+                    <image class="post-like-image" 
+                    src="/images/icon/chat.png"></image>
+                    <text class="post-like-font">{{like}}</text>
+
+                    <image class="post-like-image" 
+                    src="/images/icon/view.png"></image>
+                    <text class="post-like-font">{{viewed}}</text>
+            </view>
+        </view>
+</template>
+
+// comments:[{type: "article", comment_like: 0, comment_hate: 0, deleted: false,…},…]
+// content:"Aze haf humub kikveta onifedag vebuol fuob avupoipu uhe ci epukonih ho. Fij fuibumo ipaho pivnikguk put laewo zekfa odcinu deccu ge gosu vu ma esaenoaja hacuweri. Ebilikiv rawufi doposde vopop sulovfe decufti liche meiz odlo pesegeapu rignuz cid rewhagij lohuk bibezu pup. Tepukew pitremso aji ab tehi lizikut hu he odefedni hufum vanmo kilope ha aki. Mazog vivispaj huewdo boh pu zabuw idbojiw utjah alugo malci an gecocohar cezgeh hewuk iddak. Ogazo is figtivfip ih jovvopo ba cefog to ebejho kaab aso tulem jilne bocfem mef. Fova otezaw eznop laeve lu pi oju ejo ni aksuija le ruazaama hog nuolsag co cah."
+// cover:""
+// created_at:"2018-04-30T06:05:46.987Z"
+// deleted:false
+// hate:0
+// like:0
+// release:false
+// tags:[,…]
+// title:"Lasat not zo."
+// updated_at:"2018-04-30T06:05:46.987Z"
+// user:{subscribe: false,…}
+// viewed:0
+// __v:7
+// _id:"5ae6b23a0064953d196e4750"

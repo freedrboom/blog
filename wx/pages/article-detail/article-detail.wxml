@@ -1,0 +1,19 @@
+<!--pages/article-detail/article-detail.wxml-->
+<view class="container">
+  <view class="author-date">
+    <image class="avatar" src="{{user.avatar}}"></image>
+    <text class="author">{{user.account}}</text>
+    <text class="const-text">发表于</text>
+    <text class="date">{{created_at}}</text>
+  </view>
+  <text class="title">{{title}}</text>
+  <view class="tool">
+    <view class="circle-img">
+      <image wx:if="{{collected}}" catchtap="onColletionTap"  src="/images/icon/collection.png"></image>
+      <image wx:else catchtap="onColletionTap" src="/images/icon/collection-anti.png"></image>
+      <image catchtap="onShareTap"  class="share-img" src="/images/icon/share.png"></image>
+    </view>
+    <view class="horizon"></view>
+  </view>
+  <text class="detail">{{content}}</text>
+</view>
