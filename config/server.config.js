@@ -15,7 +15,7 @@ module.exports = {
     //vendor: Object.keys(json.dependencies) // 将 第三方依赖 单独打包
   }, //['babel-polyfill', './src/app.js'],
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "../build"),
     filename: "[name].js", //[chunkhash]
     libraryTarget: "commonjs"
   },

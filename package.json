@@ -7,6 +7,7 @@
     "start:node": "node --experimental-modules server/src/index.mjs",
     "start": "webpack-dev-server --config config/webpack.config.js",
     "build": "webpack --config config/webpack.config.prod.js",
+    "build:node":"webpack --config config/server.config.js",
     "serve": "serve dist",
     "lint": "eslint src"
   },

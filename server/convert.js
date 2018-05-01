@@ -1,26 +1,26 @@
-var fs = require('fs')
-var path = require('path')
+var fs = require("fs")
+var path = require("path")
 
 var copyFile = function(srcPath, tarPath, cb) {
-  if (tarPath.endsWith('.mjs')) {
-    tarPath = tarPath.replace(/\.mjs$/i, '.js')
+  if (tarPath.endsWith(".mjs")) {
+    tarPath = tarPath.replace(/\.mjs$/i, ".js")
   }
   var rs = fs.createReadStream(srcPath)
-  rs.on('error', function(err) {
+  rs.on("error", function(err) {
     if (err) {
-      console.log('read error', srcPath)
+      console.log("read error", srcPath)
     }
     cb && cb(err)
   })
 
   var ws = fs.createWriteStream(tarPath)
-  ws.on('error', function(err) {
+  ws.on("error", function(err) {
     if (err) {
-      console.log('write error', tarPath)
+      console.log("write error", tarPath)
     }
     cb && cb(err)
   })
-  ws.on('close', function(ex) {
+  ws.on("close", function(ex) {
     cb && cb(ex)
   })
 
@@ -45,7 +45,7 @@ var copyFolder = function(srcDir, tarDir, cb) {
 
       fs.stat(srcPath, function(err, stats) {
         if (stats.isDirectory()) {
-          console.log('mkdir', tarPath)
+          console.log("mkdir", tarPath)
           if (!fs.existsSync(tarPath)) {
             fs.mkdir(tarPath, function(err) {
               if (err) {
@@ -67,18 +67,16 @@ var copyFolder = function(srcDir, tarDir, cb) {
     files.length === 0 && cb && cb()
   })
 }
-if (!fs.existsSync('./convert')) {
-  fs.mkdir('./convert', function(err) {
+if (!fs.existsSync("./convert")) {
+  fs.mkdir("./convert", function(err) {
     if (err) {
       console.log(err)
       return
     }
-    copyFolder('./src', './convert', function(err) {
+    copyFolder("./src", "./convert", function(err) {
       if (err) {
         return
       }
-
-      //continue
     })
   })
 }
