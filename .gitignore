@@ -1,0 +1,5 @@
+*.un~
+node_modules/
+package-lock.json
+server/convert/
+server/build/

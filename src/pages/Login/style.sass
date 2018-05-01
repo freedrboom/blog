@@ -1,0 +1,82 @@
+#login-section
+    width: 80vw
+    height: 80vh
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    background: rgba(40,57,101,.9)
+    padding: 0
+    margin: 0 auto
+    padding: 2rem
+    background-origin: padding-box
+    // max-width: 800px
+    // min-width: 500px
+    .group
+        //flex: 0 0
+        flex-grow: 0
+        flex-shrink: 1
+        padding: 0 0 0 200px
+        margin: 1rem 0
+        position: relative
+        left: 0
+        color: #fff
+        width: 500px
+        height: 100px
+        // max-height: 300px
+        // min-height: 200px
+        label
+            display: inline-flex
+            justify-content: center
+            align-items: center
+            position: absolute
+            left: 0
+            margin: 0 auto
+            padding: 0
+            height: 100%
+            width: 130px
+            border-right: 10px solid #06eac094
+            font-size: 1.5rem
+        input
+            width: 550px
+            position: absolute
+            left: 0
+            margin: 0 0
+            padding: 0 0 0 150px
+            height: 100%
+            background: rgba(255,255,255,.1)
+            border: none
+            border-radius: 35px
+            color: #fff
+            font: 400 1.5rem Arial
+            box-sizing: padding-box
+            &::-webkit-input-placeholder
+                color: red
+                font: 400 2rem Arial
+            &:focus
+                outline: none
+        a
+            display: inline-flex
+            justify-content: center
+            align-items: center
+            width: 100px
+            position: absolute
+            right: 0
+            margin: 0 0
+            height: 100%
+            background: rgba(255,255,255,.0)
+    .login
+        margin: 0 auto
+        padding: 0.5rem
+        display: flex
+        flex-direction: row
+        justify-content: center
+        align-items: center
+        color: #fff
+        max-width: 500px
+        min-width: 300px
+        line-height: 1.25
+        height: 3rem
+        background: #0572f9
+        border-radius: 2rem
+        font: 400 1.25rem Arial
