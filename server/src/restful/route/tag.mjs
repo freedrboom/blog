@@ -1,10 +1,7 @@
 import Router from "koa-router"
 
-import { addTag, getTagsByArticle, getTagsByUser } from "../controllers/tag"
+import { addTag, queryTag } from "../controllers/tag"
 const tagRouter = new Router()
-tagRouter
-  .post("/addTag", addTag)
-  .post("/getTagsByArticle", getTagsByArticle)
-  .post("/getTagsByUser", getTagsByUser)
+tagRouter.post("/tags", addTag).get("/tags", queryTag)
 
 export default tagRouter

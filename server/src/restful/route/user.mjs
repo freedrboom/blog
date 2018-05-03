@@ -1,6 +1,18 @@
 import Router from "koa-router"
 
-import { login, register } from "../controllers/user"
+import {
+  logout,
+  login,
+  register,
+  queryUser,
+  getUserById,
+  updateUserById
+} from "../controllers/user"
 const userRouter = new Router()
-userRouter.post("/login", login).post("/register", register)
+userRouter
+  .post("/login", login)
+  .post("/register", register)
+  .get("/users/:id", getUserById)
+  .get("/users", queryUser)
+  .put("/users/:id", updateUserById)
 export default userRouter

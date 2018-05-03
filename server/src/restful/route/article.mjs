@@ -1,15 +1,17 @@
 import Router from "koa-router"
 
 import {
+  queryArticles,
+  updateArticleById,
+  removeArticleById,
   addArticle,
-  getArticleById,
-  getArticleByUser,
-  getAllArticles
+  getArticleById
 } from "../controllers/article"
 const articleRouter = new Router()
 articleRouter
-  .post("/addArticle", addArticle)
+  .post("/articles", addArticle)
   .get("/articles/:id", getArticleById)
-  .get("/getArticleByUser", getArticleByUser)
-  .get("/articles", getAllArticles)
+  .get("/articles", queryArticles)
+  .del("articles/:id", removeArticleById)
+  .put("articles/:id", updateArticleById)
 export default articleRouter

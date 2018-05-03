@@ -1,7 +1,12 @@
 import { User } from "../../mongoose/proxy"
 import { pwdCompare, signToken } from "../../common/sigin"
-export const login = async (ctx, next) => {
-  const { account, password } = ctx.request.body
+import getFromObject from "../../common/utils"
+
+const login = async (ctx, next) => {
+  const { account, password } = getFromObject(ctx.request.body, [
+    "account",
+    "password"
+  ])
   try {
     const user = await User.getUserByAccount(account)
     if (!user) {
@@ -24,7 +29,7 @@ export const login = async (ctx, next) => {
   }
 }
 
-export const register = async (ctx, next) => {
+const register = async (ctx, next) => {
   const { account, password, email, description } = ctx.request.body
   const data = { account, password, email, description }
   try {
@@ -38,10 +43,60 @@ export const register = async (ctx, next) => {
     ctx.throw(500, err.message)
   }
 }
-export const logout = async (ctx, next) => {
+const logout = async (ctx, next) => {
   ctx.cookies.set("userId", "", {
     path: "/",
     maxAge: -1
   })
   ctx.body = "ok"
 }
+const queryUser = async (ctx, next) => {
+  const data = getFromObject(ctx.query, ["account", "email"])
+  try {
+    const tempUser = await User.queryUser(data)
+    if (!tempUser) {
+      throw new Error("找不到")
+    }
+    ctx.body = tempUser
+  } catch (e) {
+    ctx.throw(500, err.message)
+  }
+}
+
+const getUserById = async (ctx, next) => {
+  const { id } = getFromObject(ctx.params, ["id"])
+  try {
+    const tempUser = await User.getUserInfo(id)
+    if (!tempUser) {
+      throw new Error("找不到")
+    }
+    ctx.body = tempUser
+  } catch (e) {
+    ctx.throw(500, err.message)
+  }
+}
+
+const removeUserById = async (ctx, next) => {}
+
+const updateUserById = async (ctx, next) => {
+  const { id } = getFromObject(ctx.params, ["id"])
+  const data = getFromObject(ctx.request.body, [
+    "location",
+    "github",
+    "website",
+    "description",
+    "subscribe",
+    "profile",
+    "avatar"
+  ])
+  try {
+    const tempUser = await User.updateUser(id, data)
+    if (!tempUser) {
+      throw new Error("找不到")
+    }
+    ctx.body = tempUser
+  } catch (e) {
+    ctx.throw(500, err.message)
+  }
+}
+export { logout, login, register, queryUser, getUserById, updateUserById }

@@ -1,15 +1,15 @@
 import { User, Article } from "../../mongoose/proxy"
+import getFromObject from "../../common/utils"
 
-export const addArticle = async (ctx, next) => {
-  const {
-    user,
-    tags,
-    title,
-    content,
-    release = false,
-    cover
-  } = ctx.request.body
-  const data = { user, tags, title, content, release, cover }
+const addArticle = async (ctx, next) => {
+  const data = getFromObject(ctx.request.body, [
+    "user",
+    "tags",
+    "title",
+    "content",
+    "release",
+    "cover"
+  ])
   try {
     const newArtile = await Article.newAndSave(data)
     const addedArticle = await Article.getArticleById(newArtile.id)
@@ -22,8 +22,8 @@ export const addArticle = async (ctx, next) => {
   }
 }
 
-export const getArticleById = async (ctx, next) => {
-  const { id } = ctx.params
+const getArticleById = async (ctx, next) => {
+  const { id } = getFromObject(ctx.params, ["id"])
   try {
     const tempArticle = await Article.getArticleById(id)
     if (!tempArticle) {
@@ -35,8 +35,31 @@ export const getArticleById = async (ctx, next) => {
   }
 }
 
-export const getArticleByUser = async (ctx, next) => {
-  const { user } = ctx.request.body
+const removeArticleById = async (ctx, next) => {
+  const { id } = getFromObject(ctx.params, ["id"])
+  try {
+    const tempArticle = await Article.removeArticle(id)
+    ctx.body = tempArticle
+  } catch (e) {
+    ctx.throw(500, err.message)
+  }
+}
+
+const updateArticleById = async (ctx, next) => {
+  const { id } = getFromObject(ctx.params, ["id"])
+  try {
+    const tempArticle = await Article.updateArticle(id)
+    if (!tempArticle) {
+      throw new Error("找不到")
+    }
+    ctx.body = tempArticle
+  } catch (e) {
+    ctx.throw(500, err.message)
+  }
+}
+
+const queryArticles = async (ctx, next) => {
+  const { user } = getFromObject(ctx.query, ["user"])
   try {
     const tempArticle = await Article.queryArticle({ user })
     if (!tempArticle) {
@@ -48,15 +71,10 @@ export const getArticleByUser = async (ctx, next) => {
   }
 }
 
-export const getAllArticles = async (ctx, next) => {
-  const { user } = ctx.request.body
-  try {
-    const tempArticle = await Article.queryArticle()
-    if (!tempArticle) {
-      throw new Error("找不到")
-    }
-    ctx.body = tempArticle
-  } catch (e) {
-    ctx.throw(500, err.message)
-  }
+export {
+  queryArticles,
+  updateArticleById,
+  removeArticleById,
+  getArticleById,
+  addArticle
 }

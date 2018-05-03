@@ -2,7 +2,6 @@
 import { Link } from "react-router-dom"
 import React from "react"
 import { observer } from "mobx-react"
-
 import "./Articlemeta.sass"
 
 const ArticleMeta = observer(props => {

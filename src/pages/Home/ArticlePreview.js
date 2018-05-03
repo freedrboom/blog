@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { inject, observer } from "mobx-react"
-
+import marked from "../../conmm/markdown"
 import "./articleReview.sass"
 
 const FAVORITED_CLASS = "btn btn-sm btn-primary"
@@ -25,7 +25,7 @@ export default class ArticlePreview extends React.Component {
     const favoriteButtonClass = article.favorited
       ? FAVORITED_CLASS
       : NOT_FAVORITED_CLASS
-
+    const markup = { __html: marked(article.content || "") }
     return (
       <div className="article-preview">
         <div className="article-meta">
@@ -54,7 +54,9 @@ export default class ArticlePreview extends React.Component {
 
         <Link to={`/article/${article._id}`} className="preview-link">
           <h3>{article.title}</h3>
-          <p className="preview-content">{article.content}</p>
+
+          <div className="preview-content" dangerouslySetInnerHTML={markup} />
+
           <div className="preview-bottom">
             <ul className="tag-list">
               {article.tags.map((tag, index) => {

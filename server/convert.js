@@ -1,6 +1,5 @@
 var fs = require("fs")
 var path = require("path")
-
 var copyFile = function(srcPath, tarPath, cb) {
   if (tarPath.endsWith(".mjs")) {
     tarPath = tarPath.replace(/\.mjs$/i, ".js")

@@ -1,5 +1,6 @@
 import { UserModel } from "../models"
 import { signToken, pwdHash } from "../../common/sigin"
+import getFromObject from "../../common/utils"
 export default class User {
   static getModel() {
     return UserModel
@@ -15,6 +16,25 @@ export default class User {
   }
   static async getUserByAccount(account) {
     return UserModel.findOne({ account })
+  }
+  static async updateUser(id, data) {
+    const tempUser = await User.getUserById(id)
+
+    if (!tempUser) {
+      throw new Error("找不到")
+    }
+    const tempData = getFromObject(data, [
+      "location",
+      "github",
+      "website",
+      "description",
+      "subscribe",
+      "profile",
+      "avatar"
+    ])
+    Object.assign(tempUser, tempData)
+    await tempUser.save()
+    return tempUser
   }
 
   static async newAndSave(data) {

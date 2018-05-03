@@ -14,7 +14,7 @@
             "name": "Launch Program",
             "type": "node",
             "request": "launch",
-            "program": "${workspaceFolder}server/src/index.mjs",
+            "program": "${workspaceFolder}/server/src/index.mjs",
             "cwd": "${workspaceFolder}",
             "runtimeArgs": [
                 "--experimental-modules"               

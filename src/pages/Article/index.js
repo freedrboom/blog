@@ -1,11 +1,11 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import ArticleMeta from "./ArticleMeta"
-import marked from "marked"
 import CommentContainer from "./CommentContainer"
 import { inject, observer } from "mobx-react"
 import { withRouter } from "react-router-dom"
 // import RedError from '../RedError';
+import marked from "../../conmm/markdown"
 
 import "./index.sass"
 
@@ -36,7 +36,7 @@ export default class Article extends React.Component {
     if (!article)
       return <div message="Can't load article">Can't load article</div>
     const { comments } = article
-    const markup = { __html: marked(article.content) }
+    const markup = { __html: marked(article.content || "") }
     console.log(markup)
     return (
       <div className="article-page">
