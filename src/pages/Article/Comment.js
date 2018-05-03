@@ -10,7 +10,7 @@ const Comment = props => {
   console.log(comment, user)
   return (
     <div className="card">
-      <p className="card-text">{comment.body}</p>
+      <p className="card-text">{comment.content}</p>
       <div className="card-footer">
         <Link to={`/@${user._id}`} className="comment-author">
           <img src={user.avatar} className="comment-author-img" alt="" />

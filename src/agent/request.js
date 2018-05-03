@@ -1,10 +1,10 @@
-import superagentPromise from 'superagent-promise'
-import _superagent from 'superagent'
+import superagentPromise from "superagent-promise"
+import _superagent from "superagent"
 
 const superagent = superagentPromise(_superagent, global.Promise)
 //const API_ROOT = "http://207.148.27.201:3000/resetful"
-//const API_ROOT = "https://apimu.freedrb.org/resetful"
-const API_ROOT = 'http://127.0.0.1:3000/resetful'
+const API_ROOT = "https://apimu.freedrb.org/resetful"
+//const API_ROOT = 'http://127.0.0.1:3000/resetful'
 const handleErrors = err => {
   // if (err && err.response && err.response.status === 401) {
   //   authStore.logout()

@@ -54,17 +54,18 @@ export default class ArticlePreview extends React.Component {
 
         <Link to={`/article/${article._id}`} className="preview-link">
           <h3>{article.title}</h3>
-          <p>{article.description}</p>
-          <span>Read more...</span>
-          <ul className="tag-list">
-            {article.tags.map((tag, index) => {
-              return (
-                <li className="tag-default tag-pill tag-outline" key={index}>
-                  {tag.name}
-                </li>
-              )
-            })}
-          </ul>
+          <p className="preview-content">{article.content}</p>
+          <div className="preview-bottom">
+            <ul className="tag-list">
+              {article.tags.map((tag, index) => {
+                return (
+                  <li className="tag-default tag-pill tag-outline" key={index}>
+                    {tag.name}
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
         </Link>
       </div>
     )

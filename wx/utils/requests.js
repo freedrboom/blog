@@ -1,4 +1,4 @@
-const preUrl = "https://apimu.freedrb.org/resetful"
+import { apiPrefix } from "../data/config"
 const ajax = ({
   url = "",
   method = "GET",
@@ -7,12 +7,9 @@ const ajax = ({
   },
   data,
 }) => {
-  /*
-  OPTIONS, GET, HEAD, POST, PUT, , TRACE, CONNECT
-    */
   return new Promise((resolve, reject) => {
     wx.request({
-      url: preUrl + url,
+      url: apiPrefix + url,
       method,
       header,
       data,

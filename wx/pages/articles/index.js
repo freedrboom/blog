@@ -1,5 +1,6 @@
-// pages/articles/articles.js
+// pages/articles/index.js
 import requests from "../../utils/requests"
+import { localUrls } from "../../data/config"
 
 var app = getApp()
 Page({
@@ -65,7 +66,7 @@ Page({
     var postId = event.currentTarget.dataset.postid
     // console.log("on post id is" + postId);
     wx.navigateTo({
-      url: "/pages/article-detail/article-detail?id=" + postId,
+      url: `${localUrls.articleDetail}?id=${postId}`,
     })
   },
 
@@ -75,7 +76,7 @@ Page({
     // target这里指的是image，而currentTarget指的是swiper
     var postId = event.target.dataset.postid
     wx.navigateTo({
-      url: "/pages/article-detail/article-detail?id=" + postId,
+      url: `${localUrls.articleDetail}?id=${postId}`,
     })
   },
 })

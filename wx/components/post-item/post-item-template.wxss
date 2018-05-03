@@ -52,6 +52,9 @@
     margin-left: 20rpx;
     letter-spacing:2rpx;
     line-height: 40rpx;
+    overflow:hidden;
+    height:80rpx;
+
 }
 .post-like{
     font-size:13px;

@@ -4,7 +4,7 @@ Page({
     //     url:"../posts/post"
     // });
     wx.switchTab({
-      url: "../articles/articles",
+      url: "../articles/index",
     })
   },
 })

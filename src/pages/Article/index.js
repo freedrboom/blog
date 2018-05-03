@@ -45,7 +45,7 @@ export default class Article extends React.Component {
           <ArticleMeta user={article.user} />
         </div>
 
-        <div dangerouslySetInnerHTML={markup} />
+        <div className="article-content" dangerouslySetInnerHTML={markup} />
         <ul className="tag-list">
           {article.tags.map(tag => {
             return (

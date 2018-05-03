@@ -10,16 +10,16 @@ App({
 /*
     "pages/music/music",
     "pages/video/video"
-          {
+    {
         "pagePath": "pages/music/music",
         "text": "music",
         "iconPath": "images/tab/dianying.png",
         "selectedIconPath": "images/tab/dianying_hl.png"
-      },
-      {
+    },
+    {
         "pagePath": "pages/video/video",
         "text": "video",
         "iconPath": "images/tab/dianying.png",
         "selectedIconPath": "images/tab/dianying_hl.png"
-      },
+    },
 */

@@ -2,8 +2,33 @@
     display: flex
     align-items: stretch
     flex-direction: column
+    margin: 15px 10px
+    background: rgba(240,217,241,0.81)
+    .article-meta
+        background: rgba(0,255,186,0.44)
     .preview-link
         display: flex
         flex-direction: column
-        .tag-list
-            align-self: flex-end
+        background: #676a714f
+        margin: 0.0rem
+        padding: 0.2rem
+        text-decoration: none
+        .preview-bottom
+            display: flex
+            flex-direction: row-reverse
+            padding: 0.1rem
+            border: 0.1rem solid rgba(0,143,255,0.13)
+            .tag-list
+                margin: 0.1rem
+                padding: 0.1rem
+        h3
+            margin: 0.5rem 0
+    a
+        img
+            border-radius: 50%
+    .preview-content
+        height: 4rem
+        text-overflow: ellipsis
+        margin: 0.1rem
+        padding: 0.2rem
+        overflow: hidden
