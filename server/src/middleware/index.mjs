@@ -30,7 +30,7 @@ const verifyJwt = pathArr => {
   return async (ctx, next) => {
     const { token } = ctx.query
     if (optionPath.some(value => verityPath(ctx.path, value)))
-      if (!await verifyToken(token)) {
+      if (!(await verifyToken(token))) {
         ctx.throw(401, "令牌失效")
       } else {
         ctx.userInfo = await decodeToken(token)
@@ -69,11 +69,12 @@ location /apis { rewrite ^.+apis/?(.*)$ /$1 break; include uwsgi_params; proxy_p
 */
 const cors = async (ctx, next) => {
   ctx.set("Access-Control-Allow-Credentials", "true") //允许带cookies
-  ctx.set("Access-Control-Allow-Origin", ctx.header.origin) //*可以设定允许跨域，但当要带cookies时必须全匹配，否则不能通过
-  ctx.set(
-    "Access-Control-Allow-Headers",
-    ctx.header["access-control-request-headers"]
-  ) //"Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild",
+  if (ctx.header.origin)
+    ctx.set("Access-Control-Allow-Origin", ctx.header.origin) //*可以设定允许跨域，但当要带cookies时必须全匹配，否则不能通过
+  // ctx.set(
+  //   "Access-Control-Allow-Headers",
+  //   ctx.header["access-control-request-headers"]
+  // ) //"Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild",
   ctx.set("Access-Control-Allow-Methods", "*") //"PUT, POST, GET, DELETE, OPTIONS"
   if (ctx.method == "OPTIONS") {
     ctx.set("Access-Control-Max-Age", 36000) //预检缓存Access-Control-Max-Age

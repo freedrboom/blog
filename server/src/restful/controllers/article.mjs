@@ -59,9 +59,9 @@ const updateArticleById = async (ctx, next) => {
 }
 
 const queryArticles = async (ctx, next) => {
-  const { user } = getFromObject(ctx.query, ["user"])
+  const data = getFromObject(ctx.query, ["user"])
   try {
-    const tempArticle = await Article.queryArticle({ user })
+    const tempArticle = await Article.queryArticle(data)
     if (!tempArticle) {
       throw new Error("找不到")
     }

@@ -10,7 +10,7 @@ export default connectMongoose
     const app = new koa()
     app
       .use(timed)
-      .use(cors)
+      //.use(cors)
       .use(bodyParser())
       .use(graphqlMounted)
       .use(router.routes())
